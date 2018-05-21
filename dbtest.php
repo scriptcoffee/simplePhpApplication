@@ -16,7 +16,7 @@ if (!empty($_POST['name']) && !empty($_POST['post'])) {
 
 // Performing SQL query
 $query = 'SELECT * FROM Posts';
-    pg_query($query) or die('Query failed: ' . pg_last_error());
+$result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
 // Printing results in HTML
 echo "<table>\n";
