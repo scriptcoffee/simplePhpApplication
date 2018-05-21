@@ -1,16 +1,10 @@
 <?php
-$dbhost = getenv("MYSQL_SERVICE_HOST");
-$dbport = getenv("MYSQL_SERVICE_PORT");
+$dbhost = getenv("DB_HOST");
 $dbuser = getenv("DB_USER");
 $dbpwd = getenv("DB_PASSWORD");
 $dbname = getenv("DB_DATABASE");
-echo $dbuser;
-$connection = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
-if ($connection->connect_errno) {
-    printf("Connect failed: %s\n", $mysqli->connect_error);
-    exit();
-} else {
-    printf("Connected to the database");
-}
-$connection->close();
+$dbconn = pg_connect("host=".$dbhost." dbname=".$dbname." user=".$dbuser." password=".$dbpw)
+    or die('Could not connect: ' . pg_last_error());
+echo pg_dbname();
+pg_close($dbconn);
 ?>
