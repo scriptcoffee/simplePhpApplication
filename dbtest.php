@@ -10,7 +10,7 @@ $createTableStatement = "CREATE TABLE Posts (Name varchar(255),Post varchar(255)
 pg_query($createTableStatement);
 
 if (!empty($_POST['name']) && !empty($_POST['post'])) {
-    $query = "INSERT INTO Posts VALUES (".$_POST['name'].",".$_POST['post'].");";
+    $query = "INSERT INTO Posts VALUES ('".$_POST['name']."','".$_POST['post']."');";
     pg_query($query) or die('Query failed: ' . pg_last_error());
 }
 
