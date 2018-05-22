@@ -6,7 +6,7 @@ $dbname = getenv("DB_DATABASE");
 $dbconn = pg_connect("host=".$dbhost." dbname=".$dbname." user=".$dbuser." password=".$dbpwd)
     or die('Could not connect: ' . pg_last_error());
 
-$createTableStatement = "CREATE TABLE Posts (Name varchar(255),Post varchar(255));";
+$createTableStatement = "CREATE TABLE IF NOT EXISTS Posts (Name varchar(255),Post varchar(255));";
 pg_query($createTableStatement);
 
 if (!empty($_POST['name']) && !empty($_POST['post'])) {
